@@ -20,6 +20,7 @@ youtube=(
 	"inv.bp.mutahar.rocks"
 	"tube.cthd.icu"
 	"invidious.lunar.icu"
+
 	# Piped
 	"piped.kavin.rocks"
 	"piped.silkky.cloud"
@@ -83,6 +84,65 @@ tiktok=(
 	"proxitok.herokuapp.com"
 )
 
+reddit=(
+	# teddit
+	"teddit.net"
+	"teddit.ggc-project.de"
+	"teddit.zaggy.nl"
+	"teddit.namazso.eu"
+	"teddit.alefvanoon.xyz"
+	"incogsnoo.com"
+	"teddit.pussthecat.org"
+	"reddit.lol"
+	"teddit.sethforprivacy.com"
+	"teddit.totaldarkness.net"
+	"teddit.adminforge.de"
+	"teddit.bus-hit.me"
+	"teddit.froth.zone"
+	"rdt.trom.tf"
+
+	# libreddit
+	"libredd.it"
+	"libreddit.spike.codes"
+	"libreddit.dothq.co"
+	"libreddit.kavin.rocks"
+	"reddit.invak.id"
+	"lr.riverside.rocks"
+	"libreddit.silkky.cloud"
+	"libreddit.privacy.com.de"
+	"libreddit.domain.glass"
+	"reddit.artemislena.eu"
+	"r.nf"
+	"libreddit.some-things.org"
+	"reddit.stuehieyr.com"
+	"lr.mint.lgbt"
+	"libreddit.alefvanoon.xyz"
+	"libreddit.igna.rocks"
+	"libreddit.autarkic.org"
+	"libreddit.drivet.xyz"
+	"libreddit.de"
+	"libreddit.pussthecat.org"
+	"libreddit.mutahar.rocks"
+	"libreddit.northboot.xyz"
+	"leddit.xyz"
+	"de.leddit.xyz"
+	"lr.cowfee.moe"
+	"libreddit.hu"
+	"libreddit.totaldarkness.net"
+	"libreddit.esmailelbob.xyz"
+	"libreddit.nl"
+	"lr.stilic.ml"
+	"reddi.tk"
+	"libreddit.bus-hit.me"
+	"libreddit.datatunnel.xyz"
+	"r.walkx.org"
+	"libreddit.kylrth.com"
+	"libreddit.yonalee.eu"
+	"libreddit.tiekoetter.com"
+	"reddit.rtrace.io"
+	"libreddit.lunar.icu"
+)
+
 link="$1"
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 	instance="${youtube[$(($RANDOM % ${#youtube[@]}))]}"
@@ -94,11 +154,14 @@ elif [[ "$1" =~ "twitter.com" ]]; then
 elif [[ "$1" =~ "instagram.com" ]]; then
 	instance="${instagram[$(($RANDOM % ${#instagram[@]}))]}"
 	link=$(echo "$1" | sed "s/\.com\/\(\w\{2,\}\)/.com\/u\/\1/" )
-	link=$(echo "$link" | sed "s/www\.instagram\.com/$instance/" )
+	link=$(echo "$link" | sed "s/www\.instagram\.com/$instance/")
 elif [[ "$1" =~ "tiktok.com" ]]; then
 	instance="${tiktok[$(($RANDOM % ${#tiktok[@]}))]}"
-	link=$(echo "$link" | sed "s/www\.tiktok\.com/$instance/" )
+	link=$(echo "$link" | sed "s/www\.tiktok\.com/$instance/")
 	# TODO: Also check for other link formats
+elif [[ "$1" =~ "reddit.com" ]]; then
+	instance="${reddit[$(($RANDOM % ${#reddit[@]}))]}"
+	link=$(echo "$link" | sed "s/www\.reddit\.com/$instance/")
 fi
 
 [ "$1" != "$link" ] && xdg-open "$link" >/dev/null
