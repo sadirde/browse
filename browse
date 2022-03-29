@@ -67,6 +67,17 @@ twitter=(
 	"nitter.bird.froth.zone"
 )
 
+instagram=(
+	# Bibliogram
+	"bibliogram.art"
+	"bibliogram.snopyta.org"
+	"bibliogram.pussthecat.org"
+	"bibliogram.1d4.us"
+	"insta.trom.tf"
+	"bib.actionsack.com"
+	"biblio.alefvanoon.xyz"
+)
+
 link="$1"
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 	instance="${youtube[$(($RANDOM % ${#youtube[@]}))]}"
@@ -75,6 +86,10 @@ if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 elif [[ "$1" =~ "twitter.com" ]]; then
 	instance="${twitter[$(($RANDOM % ${#twitter[@]}))]}"
 	link=$(echo "$1" | sed "s/twitter\.com/$instance/")
+elif [[ "$1" =~ "instagram.com" ]]; then
+	instance="${instagram[$(($RANDOM % ${#instagram[@]}))]}"
+	link=$(echo "$1" | sed "s/\.com\/\(\w\{2,\}\)/.com\/u\/\1/" )
+	link=$(echo "$link" | sed "s/www\.instagram\.com/$instance/" )
 fi
 
 [ "$1" != "$link" ] && xdg-open "$link" >/dev/null
