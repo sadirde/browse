@@ -1,6 +1,7 @@
 #!/bin/sh
 
-invidious=(
+youtube=(
+	# Invidious
 	"yewtu.be"
 	"invidious.osi.kr"
 	"invidious.flokinet.to"
@@ -19,9 +20,18 @@ invidious=(
 	"inv.bp.mutahar.rocks"
 	"tube.cthd.icu"
 	"invidious.lunar.icu"
+	# Piped
+	"piped.kavin.rocks"
+	"piped.silkky.cloud"
+	"piped.tokhmi.xyz"
+	"il.ax"
+	"piped.syncpundit.com"
+	"piped.mint.lgbt"
+	"piped.notyourcomputer.net"
 )
 
-nitter=(
+twitter=(
+	# Nitter
 	"nitter.net"
 	"nitter.42l.fr"
 	"nitter.pussthecat.org"
@@ -59,11 +69,11 @@ nitter=(
 
 link="$1"
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
-	instance="${invidious[$(($RANDOM % ${#invidious[@]}))]}"
+	instance="${youtube[$(($RANDOM % ${#youtube[@]}))]}"
 	link=$(echo "$1" | sed "s/www\.youtube\.com/$instance/")
 	link=$(echo "$link" | sed "s/youtu\.be\//$instance\/watch?v=/")
 elif [[ "$1" =~ "twitter.com" ]]; then
-	instance="${nitter[$(($RANDOM % ${#nitter[@]}))]}"
+	instance="${twitter[$(($RANDOM % ${#twitter[@]}))]}"
 	link=$(echo "$1" | sed "s/twitter\.com/$instance/")
 fi
 
