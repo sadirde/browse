@@ -143,6 +143,15 @@ reddit=(
 	"libreddit.lunar.icu"
 )
 
+medium=(
+	# Scribe
+	"scribe.rip"
+	"scribe.nixnet.services"
+	"scribe.citizen4.eu"
+	"scribe.bus-hit.me"
+	"scribe.froth.zone"
+)
+
 link="$1"
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 	instance="${youtube[$(($RANDOM % ${#youtube[@]}))]}"
@@ -162,6 +171,9 @@ elif [[ "$1" =~ "tiktok.com" ]]; then
 elif [[ "$1" =~ "reddit.com" ]]; then
 	instance="${reddit[$(($RANDOM % ${#reddit[@]}))]}"
 	link=$(echo "$link" | sed "s/www\.reddit\.com/$instance/")
+elif [[ "$1" =~ "medium.com" ]]; then
+	instance="${medium[$(($RANDOM % ${#medium[@]}))]}"
+	link=$(echo "$link" | sed "s/\(\w\+\.\)\?medium\.com/$instance/") # doesn't work for the articles with custom domains
 fi
 
 [ "$1" != "$link" ] && xdg-open "$link" >/dev/null
