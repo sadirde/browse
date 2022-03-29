@@ -31,7 +31,7 @@ browse https://twitter.com/search?q=nitter
 browse https://twitter.com/jack
 ```
 **Disclaimer**
-If there is a special character like `&` in the link, it should be enclosed in quotation marks.
+If there is a special character like `&` in the link, it (the whole link) should be enclosed in quotation marks.
 
 ## License
 
