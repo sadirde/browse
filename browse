@@ -78,6 +78,11 @@ instagram=(
 	"biblio.alefvanoon.xyz"
 )
 
+tiktok=(
+	# ProxiTok
+	"proxitok.herokuapp.com"
+)
+
 link="$1"
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 	instance="${youtube[$(($RANDOM % ${#youtube[@]}))]}"
@@ -90,6 +95,10 @@ elif [[ "$1" =~ "instagram.com" ]]; then
 	instance="${instagram[$(($RANDOM % ${#instagram[@]}))]}"
 	link=$(echo "$1" | sed "s/\.com\/\(\w\{2,\}\)/.com\/u\/\1/" )
 	link=$(echo "$link" | sed "s/www\.instagram\.com/$instance/" )
+elif [[ "$1" =~ "tiktok.com" ]]; then
+	instance="${tiktok[$(($RANDOM % ${#tiktok[@]}))]}"
+	link=$(echo "$link" | sed "s/www\.tiktok\.com/$instance/" )
+	# TODO: Also check for other link formats
 fi
 
 [ "$1" != "$link" ] && xdg-open "$link" >/dev/null
