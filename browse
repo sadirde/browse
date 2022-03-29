@@ -1,0 +1,70 @@
+#!/bin/sh
+
+invidious=(
+	"yewtu.be"
+	"invidious.osi.kr"
+	"invidious.flokinet.to"
+	"inv.riverside.rocks"
+	"yt.artemislena.eu"
+	"invidio.xamh.de"
+	"vid.puffyan.us"
+	"invidious-us.kavin.rocks"
+	"invidious.esmailelbob.xyz"
+	"invidious.snopyta.org"
+	"invidious.weblibre.org"
+	"invidious.namazso.eu"
+	"youtube.076.ne.jp"
+	"invidious.mutahar.rocks"
+	"invidious.privacy.gd"
+	"inv.bp.mutahar.rocks"
+	"tube.cthd.icu"
+	"invidious.lunar.icu"
+)
+
+nitter=(
+	"nitter.net"
+	"nitter.42l.fr"
+	"nitter.pussthecat.org"
+	"nitter.kavin.rocks"
+	"nitter.unixfox.eu"
+	"nitter.unixfox.eu"
+	"nitter.eu"
+	"nitter.namazso.eu"
+	"nitter.actionsack.com"
+	"nitter.hu"
+	"nitter.moomoo.me"
+	"nittereu.moomoo.me"
+	"nitter.it"
+	"nitter.grimneko.de"
+	"nitter.sethforprivacy.com"
+	"nttr.stream"
+	"nitter.cutelab.space"
+	"nitter.mint.lgbt"
+	"nitter.bus-hit.me"
+	"nitter.datatunnel.xyz"
+	"nitter.esmailelbob.xyz"
+	"tw.artemislena.eu"
+	"de.nttr.stream"
+	"nitter.winscloud.net"
+	"nitter.tiekoetter.com"
+	"nitter.spaceint.fr"
+	"twtr.bch.bar"
+	"nitter.privacy.com.de"
+	"nitter.mastodon.pro"
+	"nitter.notraxx.ch"
+	"nitter.poast.org"
+	"nitter.lunar.icu"
+	"nitter.bird.froth.zone"
+)
+
+link="$1"
+if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
+	instance="${invidious[$(($RANDOM % ${#invidious[@]}))]}"
+	link=$(echo "$1" | sed "s/www\.youtube\.com/$instance/")
+	link=$(echo "$link" | sed "s/youtu\.be\//$instance\/watch?v=/")
+elif [[ "$1" =~ "twitter.com" ]]; then
+	instance="${nitter[$(($RANDOM % ${#nitter[@]}))]}"
+	link=$(echo "$1" | sed "s/twitter\.com/$instance/")
+fi
+
+[ "$1" != "$link" ] && xdg-open "$link" >/dev/null
