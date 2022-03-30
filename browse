@@ -157,7 +157,6 @@ instance() {
 	instance="${instances[$(($RANDOM % $#))]}"
 }
 
-link="$1"
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 	instance ${youtube[@]}
 	link=$(echo "$1" | sed "s/www\.youtube\.com/$instance/")
