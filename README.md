@@ -2,7 +2,7 @@
 
 browse is something like an init system for alternative frontends of various services. Its main task is to redirect links from some of the major sites on the Internet to more privacy-friendly alternatives. These are all sites that are supported at the moment:
 
-* YouTube - Redirects to [Indivious](https://github.com/iv-org/invidious) or [Piped](https://github.com/TeamPiped/Piped)
+* YouTube - Redirects to [Invidious](https://github.com/iv-org/invidious) or [Piped](https://github.com/TeamPiped/Piped)
 * Twitter - Redirects to [Nitter](https://github.com/zedeus/nitter)
 * Instagram - Redirects to [Bibliogram](https://sr.ht/~cadence/bibliogram/)
 * TikTok - redirects to [ProxyTok](https://github.com/pablouser1/ProxiTok)
