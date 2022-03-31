@@ -170,14 +170,14 @@ elif [[ "$1" =~ "instagram.com" ]]; then
 	link=$(echo "$link" | sed "s/www\.instagram\.com/$instance/")
 elif [[ "$1" =~ "tiktok.com" ]]; then
 	instance ${tiktok[@]}
-	link=$(echo "$link" | sed "s/www\.tiktok\.com/$instance/")
+	link=$(echo "$1" | sed "s/www\.tiktok\.com/$instance/")
 	# TODO: Also check for other link formats
 elif [[ "$1" =~ "reddit.com" ]]; then
 	instance ${reddit[@]}
-	link=$(echo "$link" | sed "s/www\.reddit\.com/$instance/")
+	link=$(echo "$1" | sed "s/www\.reddit\.com/$instance/")
 elif [[ "$1" =~ "medium.com" ]]; then
 	instance ${medium[@]}
-	link=$(echo "$link" | sed "s/\(\w\+\.\)\?medium\.com/$instance/") # doesn't work for the articles with custom domains
+	link=$(echo "$1" | sed "s/\(\w\+\.\)\?medium\.com/$instance/") # doesn't work for the articles with custom domains
 fi
 
 [ "$1" != "$link" ] && xdg-open "$link" >/dev/null
