@@ -159,7 +159,7 @@ instance() {
 
 if [[ "$1" =~ "youtube.com" || "$1" =~ "youtu.be" ]]; then
 	instance ${youtube[@]}
-	link=$(echo "$1" | sed "s/www\.youtube\.com/$instance/")
+	link=$(echo "$1" | sed "s/\(\w\+\.\)\?youtube\.com/$instance/")
 	link=$(echo "$link" | sed "s/youtu\.be\//$instance\/watch?v=/")
 elif [[ "$1" =~ "twitter.com" ]]; then
 	instance ${twitter[@]}
